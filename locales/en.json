@@ -1,0 +1,83 @@
+{
+    "nav": {
+        "home": "Home",
+        "features": "Features",
+        "about": "About",
+        "contact": "Contact"
+    },
+    "hero": {
+        "title": "Secure & Ephemeral File Sharing",
+        "subtitle": "End-to-end encrypted platform for secure document sharing. Perfect for legal professionals, NGOs, activists, and media organizations. Ideal for sensitive communications and confidential disclosures.",
+        "create_channel": "Create Secure Channel",
+        "share_confidentially": "Share Confidentially",
+        "tagline": "Encrypted truths, ephemeral secrets. Define the Accountables."
+    },
+    "features": {
+        "title": "How It Works",
+        "subtitle": "Simple, secure, and ephemeral document sharing",
+        "recipients": {
+            "title": "For Recipients",
+            "description": "Register with your ProtonMail to receive encrypted documents. Share your public key via QR code or URL."
+        },
+        "senders": {
+            "title": "For Senders",
+            "description": "Scan recipient's QR code, upload files, and they're automatically encrypted. No account needed."
+        },
+        "autodelete": {
+            "title": "24h Auto-Delete",
+            "description": "Files are automatically deleted after 24 hours. Your privacy is our priority."
+        }
+    },
+    "use_cases": {
+        "title": "Who Uses NymShare",
+        "subtitle": "Secure document sharing for those who handle sensitive information",
+        "media": {
+            "title": "Media & Press",
+            "description": "Secure channel for receiving sensitive information from confidential sources"
+        },
+        "legal": {
+            "title": "Legal Professionals",
+            "description": "Protected communication for sensitive case materials and confidential reports"
+        },
+        "ngo": {
+            "title": "NGOs & Activists",
+            "description": "Secure platform for documenting and sharing sensitive findings"
+        },
+        "corporate": {
+            "title": "Corporate Ethics",
+            "description": "Confidential channel for internal reporting and compliance"
+        }
+    },
+    "security": {
+        "title": "Built for Maximum Security",
+        "features": {
+            "encryption": "End-to-end encryption using public/private key pairs",
+            "private_keys": "Private keys never leave your device",
+            "protonmail": "ProtonMail integration for secure notifications",
+            "no_accounts": "No accounts, no logins, no metadata stored",
+            "auto_delete": "Automatic 24-hour file deletion"
+        }
+    },
+    "footer": {
+        "company": {
+            "title": "Company",
+            "about": "About us",
+            "security": "Security",
+            "status": "Status",
+            "terms": "Terms & privacy"
+        },
+        "resources": {
+            "title": "Resources",
+            "help": "Help center",
+            "blog": "Blog",
+            "community": "Community"
+        },
+        "products": {
+            "title": "NymShare for",
+            "enterprise": "Enterprise",
+            "small_business": "Small business",
+            "personal": "Personal use"
+        },
+        "copyright": "© 2025 NymShare Labs, Inc."
+    }
+} 

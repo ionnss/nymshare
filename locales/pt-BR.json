@@ -1,0 +1,83 @@
+{
+    "nav": {
+        "home": "Início",
+        "features": "Recursos",
+        "about": "Sobre",
+        "contact": "Contato"
+    },
+    "hero": {
+        "title": "Compartilhamento Seguro e Efêmero",
+        "subtitle": "Plataforma criptografada ponta a ponta para compartilhamento seguro de documentos. Perfeito para profissionais jurídicos, ONGs, ativistas e organizações de mídia. Ideal para comunicações sensíveis e divulgações confidenciais.",
+        "create_channel": "Criar Canal Seguro",
+        "share_confidentially": "Compartilhar Confidencialmente",
+        "tagline": "Verdades criptografadas, segredos efêmeros. Defina os Responsáveis."
+    },
+    "features": {
+        "title": "Como Funciona",
+        "subtitle": "Compartilhamento de documentos simples, seguro e efêmero",
+        "recipients": {
+            "title": "Para Destinatários",
+            "description": "Registre-se com seu ProtonMail para receber documentos criptografados. Compartilhe sua chave pública via QR code ou URL."
+        },
+        "senders": {
+            "title": "Para Remetentes",
+            "description": "Escaneie o QR code do destinatário, faça upload dos arquivos e eles são automaticamente criptografados. Sem necessidade de conta."
+        },
+        "autodelete": {
+            "title": "Exclusão Automática em 24h",
+            "description": "Os arquivos são automaticamente excluídos após 24 horas. Sua privacidade é nossa prioridade."
+        }
+    },
+    "use_cases": {
+        "title": "Quem Usa o NymShare",
+        "subtitle": "Compartilhamento seguro de documentos para quem lida com informações sensíveis",
+        "media": {
+            "title": "Mídia & Imprensa",
+            "description": "Canal seguro para receber informações sensíveis de fontes confidenciais"
+        },
+        "legal": {
+            "title": "Profissionais Jurídicos",
+            "description": "Comunicação protegida para materiais sensíveis de casos e relatórios confidenciais"
+        },
+        "ngo": {
+            "title": "ONGs & Ativistas",
+            "description": "Plataforma segura para documentar e compartilhar descobertas sensíveis"
+        },
+        "corporate": {
+            "title": "Ética Corporativa",
+            "description": "Canal confidencial para denúncias internas e conformidade"
+        }
+    },
+    "security": {
+        "title": "Construído para Máxima Segurança",
+        "features": {
+            "encryption": "Criptografia ponta a ponta usando pares de chaves pública/privada",
+            "private_keys": "Chaves privadas nunca saem do seu dispositivo",
+            "protonmail": "Integração com ProtonMail para notificações seguras",
+            "no_accounts": "Sem contas, sem logins, sem metadados armazenados",
+            "auto_delete": "Exclusão automática após 24 horas"
+        }
+    },
+    "footer": {
+        "company": {
+            "title": "Empresa",
+            "about": "Sobre nós",
+            "security": "Segurança",
+            "status": "Status",
+            "terms": "Termos & privacidade"
+        },
+        "resources": {
+            "title": "Recursos",
+            "help": "Central de ajuda",
+            "blog": "Blog",
+            "community": "Comunidade"
+        },
+        "products": {
+            "title": "NymShare para",
+            "enterprise": "Empresas",
+            "small_business": "Pequenos negócios",
+            "personal": "Uso pessoal"
+        },
+        "copyright": "© 2025 NymShare Labs, Inc."
+    }
+} 
