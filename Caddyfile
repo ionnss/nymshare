@@ -2,19 +2,21 @@
 # Development Configuration (localhost)
 #------------------------------------------------------------
 localhost {
-	# Serve static files (optional if application needs static files)
-	root * /var/www/html
-	file_server
-
-	# Compression
-	encode gzip
+	# TLS configuration for local development
+	tls internal
 
 	# Reverse proxy to application
-	reverse_proxy app:8080
+	reverse_proxy app:8080 {
+		health_uri /
+		health_interval 5s
+		health_timeout 2s
+	}
 
-	# Development-friendly error responses
-	handle_errors {
-		respond "Dev Error: {http.error.status_code}"
+	# Log requests to console for debugging
+	log {
+		output stderr
+		format console
+		level DEBUG
 	}
 }
 

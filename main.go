@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"nymshare/routes"
 
 	"github.com/gorilla/mux"
 )
@@ -16,7 +17,7 @@ func main() {
 
 	// Configure routes
 	r := mux.NewRouter()
-	routes.Routes(r)
+	routes.ConfigureRoutes(r)
 
 	// Start server
 	log.Println("Server initialized at port 8080 in https://localhost")
