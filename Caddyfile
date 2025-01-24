@@ -24,17 +24,15 @@ localhost {
 # Production Configuration (nymshare.com)
 #------------------------------------------------------------
 nymshare.com {
-	# Serve static files
-	root * /var/www/html
-	file_server
+	# TLS will be automatically handled by Caddy
+	
+	# Reverse proxy all requests to the app
+	reverse_proxy app:8080
 
 	# Compression
 	encode gzip
 
-	# Reverse proxy
-	reverse_proxy app:8080
-
-	# Security headers (critical for production!)
+	# Security headers
 	header {
 		X-Frame-Options "SAMEORIGIN"
 		X-Content-Type-Options "nosniff"
@@ -42,38 +40,33 @@ nymshare.com {
 		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 		Referrer-Policy "strict-origin-when-cross-origin"
 		Content-Security-Policy "
-            default-src 'self';
-            script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://htmx.org;
-            style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
-            img-src 'self' data: https://cdn.jsdelivr.net;  # Added for Bootstrap Icons
-            font-src 'self' data: https://fonts.gstatic.com;
-            connect-src 'self';
-            frame-ancestors 'self';
-            object-src 'none';
-            base-uri 'self';
-            form-action 'self';
-            upgrade-insecure-requests;
-        "
+			default-src 'self';
+			script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com;
+			style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
+			img-src 'self' data: https://cdn.jsdelivr.net;
+			font-src 'self' data: https://fonts.gstatic.com;
+			connect-src 'self';
+			frame-ancestors 'self';
+			object-src 'none';
+			base-uri 'self';
+			form-action 'self';
+			upgrade-insecure-requests;
+		"
 	}
 
-	# Logging (with rotation to avoid disk bloat)
+	# Logging
 	log {
-		output file ./log/caddy/access.log {
+		output file /var/log/caddy/access.log {
 			roll_size 50MiB
 			roll_keep 5
 		}
 		format json
 	}
 
-	# Production error handling
+	# Error handling
 	handle_errors {
-		respond "An error occurred (status {http.error.status_code})"
+		respond "{http.error.status_code} {http.error.status_text}" {http.error.status_code}
 	}
-}
-
-# Redirect HTTP to HTTPS
-:80 {
-	redir https://nymshare.com{uri} permanent
 }
 
 # Redirect www to non-www

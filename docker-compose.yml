@@ -57,10 +57,12 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
+      - ./log/caddy:/var/log/caddy
     networks:
       - nymshare_network
     depends_on:
       - app
+    restart: unless-stopped
 
 volumes:
   postgres_data:
