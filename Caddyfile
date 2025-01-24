@@ -5,11 +5,33 @@ localhost {
 	# TLS configuration for local development
 	tls internal
 
-	# Reverse proxy to application
-	reverse_proxy app:8080 {
-		health_uri /
-		health_interval 5s
-		health_timeout 2s
+	# Handle static files first
+	handle /static/* {
+		uri strip_prefix /static
+		root * /nymshare/static
+		file_server
+	}
+
+	# Handle robots.txt and sitemap.xml
+	handle /robots.txt {
+		rewrite * /static/robots.txt
+		root * /nymshare
+		file_server
+	}
+
+	handle /sitemap.xml {
+		rewrite * /static/sitemap.xml
+		root * /nymshare
+		file_server
+	}
+
+	# Reverse proxy everything else to the app
+	handle /* {
+		reverse_proxy app:8080 {
+			health_uri /
+			health_interval 5s
+			health_timeout 2s
+		}
 	}
 
 	# Log requests to console for debugging
@@ -26,8 +48,30 @@ localhost {
 nymshare.com {
 	# TLS will be automatically handled by Caddy
 	
-	# Reverse proxy all requests to the app
-	reverse_proxy app:8080
+	# Handle static files first
+	handle /static/* {
+		uri strip_prefix /static
+		root * /nymshare/static
+		file_server
+	}
+
+	# Handle robots.txt and sitemap.xml
+	handle /robots.txt {
+		rewrite * /static/robots.txt
+		root * /nymshare
+		file_server
+	}
+
+	handle /sitemap.xml {
+		rewrite * /static/sitemap.xml
+		root * /nymshare
+		file_server
+	}
+
+	# Reverse proxy everything else to the app
+	handle /* {
+		reverse_proxy app:8080
+	}
 
 	# Compression
 	encode gzip

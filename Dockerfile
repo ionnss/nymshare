@@ -17,8 +17,11 @@ ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.s
 # Make script executable
 RUN chmod +x /wait-for-it.sh
 
-# Copy code
+# Copy code and static files
 COPY . .
+
+# Ensure static directory exists and has proper permissions
+RUN mkdir -p /nymshare/static && chmod -R 755 /nymshare/static
 
 # Compile application with optimizations for production
 RUN CGO_ENABLED=0 GOOS=linux go build -o /usr/local/bin/app_nymshare -ldflags="-s -w" && \

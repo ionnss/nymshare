@@ -19,6 +19,8 @@ services:
       - SMTP_ENCRYPTION=${SMTP_ENCRYPTION}
       - COOKIE_DOMAIN=${COOKIE_DOMAIN}
       - APP_VERSION=${APP_VERSION}
+    volumes:
+      - ./static:/nymshare/static
     networks:
       - nymshare_network
     depends_on:
@@ -58,6 +60,7 @@ services:
       - caddy_data:/data
       - caddy_config:/config
       - ./log/caddy:/var/log/caddy
+      - ./static:/nymshare/static
     networks:
       - nymshare_network
     depends_on:
