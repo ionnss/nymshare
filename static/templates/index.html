@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     
     <!-- SEO Meta Tags -->
     <title>NymShare - Secure & Ephemeral File Sharing Platform</title>
@@ -561,6 +561,19 @@
             border: 1px solid rgba(0,0,0,0.1);
             border-radius: 6px;
             font-size: 0.875rem;
+        }
+        
+        /* Mobile-specific zoom styling */
+        @media screen and (max-width: 768px) {
+            body {
+                zoom: 0.8;
+                -moz-transform: scale(0.8);
+                -moz-transform-origin: top left;
+                -webkit-transform: scale(0.8);
+                -webkit-transform-origin: top left;
+                transform: scale(0.8);
+                transform-origin: top left;
+            }
         }
     </style>
 
