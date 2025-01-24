@@ -15,4 +15,13 @@ func ConfigureRoutes(r *mux.Router) {
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "static/templates/index.html")
 	}).Methods("GET")
+
+	r.HandleFunc("/channel/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "static/templates/channel.html")
+	}).Methods("GET")
+
+	r.HandleFunc("/share/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "static/templates/share.html")
+	}).Methods("GET")
+
 }
