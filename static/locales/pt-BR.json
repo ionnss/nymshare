@@ -17,7 +17,7 @@
         "subtitle": "Compartilhamento de documentos simples, seguro e efêmero",
         "recipients": {
             "title": "Para Destinatários",
-            "description": "Registre-se com seu ProtonMail para receber documentos criptografados. Compartilhe sua chave pública via QR code ou URL."
+            "description": "Registre-se com seu email para receber notificações de documentos criptografados enviados a você. Compartilhe sua chave pública via QR code ou URL."
         },
         "senders": {
             "title": "Para Remetentes",
@@ -53,7 +53,7 @@
         "features": {
             "encryption": "Criptografia ponta a ponta usando pares de chaves pública/privada",
             "private_keys": "Chaves privadas nunca saem do seu dispositivo",
-            "protonmail": "Integração com ProtonMail para notificações seguras",
+            "email_integration": "Integração com email para notificações seguras",
             "no_accounts": "Sem contas, sem logins, sem metadados armazenados",
             "auto_delete": "Exclusão automática após 24 horas"
         },
@@ -89,6 +89,6 @@
             "small_business": "Pequenos negócios",
             "personal": "Uso pessoal"
         },
-        "copyright": "© 2025 NymShare Labs, Inc."
+        "copyright": " 2025 NymShare Labs, Inc."
     }
 } 
