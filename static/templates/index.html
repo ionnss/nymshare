@@ -136,16 +136,107 @@
         .navbar {
             margin: -1rem 2rem 0 2rem;
             border-radius: 15px;
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.21);
-            backdrop-filter: blur(10px);
+            background: transparent;
             height: 150px;
             padding-bottom: 0rem !important;
-            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding-top: 2rem;
+        }
+
+        .top-lang-selector {
+            position: relative;
+            background: rgba(240, 240, 240, 0.9);
+            border-radius: 30px;
+            padding: 3px;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.15),
+                       inset 0 1px 2px rgba(0,0,0,0.1),
+                       0 1px 2px rgba(255,255,255,0.3);
+            width: 80px;
+            height: 34px;
+            display: flex;
+            cursor: pointer;
+            margin-right: 1rem;
+            gap: 2px;
+        }
+
+        .toggle-option {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #666;
+            z-index: 1;
+            transition: all 0.3s ease;
+            user-select: none;
+            border-radius: 28px;
+        }
+
+        .toggle-option img {
+            width: 22px;
+            height: 22px;
+            transition: transform 0.2s ease;
+            filter: saturate(0.8);
+        }
+
+        .toggle-option.active img {
+            transform: scale(1.1);
+            filter: saturate(1.1);
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: calc(50% - 4px);
+            height: calc(100% - 6px);
+            background: white;
+            border-radius: 28px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15),
+                       0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .toggle-slider.pt {
+            transform: translateX(calc(100% + 2px));
+        }
+
+        .lang-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lang-selector select {
+            appearance: none;
+            background: transparent;
+            border: none;
+            padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+            font-family: var(--font-primary);
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .lang-selector::after {
+            content: '';
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid currentColor;
+            pointer-events: none;
         }
 
         .navbar-brand {
-            padding: 0.5rem 0;
+            color: #000;
+            font-size: 1.5rem;
         }
 
         #hero-content {
@@ -416,36 +507,6 @@
             filter: brightness(0) invert(1);
         }
 
-        /* Language selector styles */
-        .lang-selector {
-            position: relative;
-            display: inline-block;
-        }
-
-        .lang-selector select {
-            appearance: none;
-            background: transparent;
-            border: none;
-            padding: 0.5rem 1.5rem 0.5rem 0.5rem;
-            font-family: var(--font-primary);
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .lang-selector::after {
-            content: '';
-            position: absolute;
-            right: 0.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 5px solid currentColor;
-            pointer-events: none;
-        }
-
         .btn-outline-light {
             background: rgba(0, 0, 0, 0.675);
             border: 1px solid rgba(255, 255, 255, 0);
@@ -487,6 +548,20 @@
             transform: translateX(5px);
             filter: brightness(0) saturate(100%) invert(48%) sepia(85%) saturate(2728%) hue-rotate(195deg) brightness(97%) contrast(95%);
         }
+
+        .footer-lang-selector {
+            margin-top: 1.5rem;
+            width: 120px;
+        }
+
+        .footer-lang-selector select {
+            width: 100%;
+            padding: 6px 12px;
+            background: transparent;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 6px;
+            font-size: 0.875rem;
+        }
     </style>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -497,40 +572,19 @@
     <body>
     <!-- Navigation -->
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3" aria-label="Main navigation">
-            <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="/" aria-label="NymShare Home">
-                    <img src="/static/assets/logo.svg" alt="NymShare Logo" height="80" width="80">
-                    <span class="ms-3 fw-bold" style="font-size: 1.5rem;">NymShare</span>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                    <ul class="navbar-nav align-items-center">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#home" data-i18n="nav.home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#features" data-i18n="nav.features">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#about" data-i18n="nav.about">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact" data-i18n="nav.contact">Contact</a>
-                        </li>
-                        <li class="nav-item ms-3">
-                            <div class="lang-selector">
-                                <label for="languageSelector" class="visually-hidden">Select Language</label>
-                                <select id="languageSelector" class="form-select form-select-sm" onchange="changeLang(this.value)">
-                                    <option value="en">English</option>
-                                    <option value="pt-BR">Português (BR)</option>
-                                </select>
-                            </div>
-                        </li>
-                    </ul>
+        <nav class="navbar" role="navigation">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="/static/assets/logo.svg" alt="NymShare Logo" height="40" class="me-2">
+                <span class="fw-bold">NymShare</span>
+            </a>
+            <div class="top-lang-selector" onclick="toggleLang()" id="langToggle">
+                <div class="toggle-option" id="enOption">
+                    <img src="https://hatscripts.github.io/circle-flags/flags/gb.svg" alt="English" width="20">
                 </div>
+                <div class="toggle-option" id="ptOption">
+                    <img src="https://hatscripts.github.io/circle-flags/flags/br.svg" alt="Português" width="20">
+                </div>
+                <div class="toggle-slider" id="toggleSlider"></div>
             </div>
         </nav>
     </header>
@@ -699,9 +753,16 @@
                             <img src="/static/assets/logo.svg" alt="NymShare Logo" height="120">
                             <span class="mt-3 fw-bold text-dark" style="font-size: 1.25rem;">NymShare</span>
                         </a>
-                        <div class="social-icons mt-4">
+                        <div class="social-icons mt-4 mb-4">
                             <a href="#" class="text-dark me-4 fs-5"><i class="bi bi-twitter-x"></i></a>
                             <a href="#" class="text-dark fs-5"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                        <div class="lang-selector footer-lang-selector">
+                            <label for="languageSelector" class="visually-hidden">Select Language</label>
+                            <select id="languageSelector" class="form-select form-select-sm" onchange="changeLang(this.value)">
+                                <option value="en">EN</option>
+                                <option value="pt-BR">PT</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-6 col-lg-2 mb-4">
@@ -736,8 +797,8 @@
             </div>
         </footer>
     </main>
-    </div>
-
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         // Initialize i18next
         async function initI18n() {
@@ -774,7 +835,7 @@
                 updateContent();
                 
                 // Update both language selectors
-                document.querySelectorAll('#languageSelector').forEach(select => {
+                document.querySelectorAll('select[id$="LanguageSelector"]').forEach(select => {
                     select.value = lang;
                 });
             } catch (error) {
@@ -801,6 +862,46 @@
             el.style.setProperty('--posX', x-l-w/2);
             el.style.setProperty('--posY', y-t-h/2);
         });
+
+        function toggleLang() {
+            const slider = document.getElementById('toggleSlider');
+            const enOption = document.getElementById('enOption');
+            const ptOption = document.getElementById('ptOption');
+            const currentLang = slider.classList.contains('pt') ? 'en' : 'pt-BR';
+            
+            if (currentLang === 'en') {
+                slider.classList.remove('pt');
+                enOption.classList.add('active');
+                ptOption.classList.remove('active');
+            } else {
+                slider.classList.add('pt');
+                ptOption.classList.add('active');
+                enOption.classList.remove('active');
+            }
+            
+            changeLang(currentLang);
+        }
+
+        // Initialize toggle state based on current language
+        function initToggle() {
+            const currentLang = document.getElementById('languageSelector').value;
+            const slider = document.getElementById('toggleSlider');
+            const enOption = document.getElementById('enOption');
+            const ptOption = document.getElementById('ptOption');
+            
+            if (currentLang === 'pt-BR') {
+                slider.classList.add('pt');
+                ptOption.classList.add('active');
+                enOption.classList.remove('active');
+            } else {
+                slider.classList.remove('pt');
+                enOption.classList.add('active');
+                ptOption.classList.remove('active');
+            }
+        }
+
+        // Call initToggle after i18next is initialized
+        document.addEventListener('DOMContentLoaded', initToggle);
     </script>
 </body>
 </html>
