@@ -1,0 +1,73 @@
+# NEXT FLOWS
+
+## Channel Creation Flow
+1. **User Registration**
+   - User provides email (any valid email, any provider)
+   - Email verification required
+   - If email exists, old channel/public key deleted after verification
+
+2. **Key Generation (Browser-side)**
+   - Uses Web Crypto API in JavaScript
+   - Generates public/private keypair client-side
+   - Private key never touches our server
+   - Automatic download of private key file to user's device
+   - No recovery options - user responsibility
+
+3. **Server Storage**
+   - Only stores:
+     - Verified email
+     - Public key
+     - Channel information
+
+4. **Channel Access**
+   - Generates unique channel URL/QR code
+   - Based on public key
+   - Shareable with potential whistleblowers
+
+
+## File Sharing Flow (Whistleblowers)
+1. **Access**
+   - No account needed
+   - Access via channel URL or QR code
+
+2. **File Upload**
+   - Whistleblower uploads raw files
+   - **Backend Processing**:
+     1. Server strips all metadata from files (using tools like `exiftool`)
+     2. Server encrypts files using recipient's public key
+     3. Encrypted files stored in VPS directory
+     4. Auto-delete after 24 hours or as established by the whistleblower
+
+3. **File Access (Channel Owner)**
+   - Receives EMail notification
+   - Downloads encrypted file
+   - Uses their private key file to decrypt locally on the browser
+
+This approach has several advantages:
+- More robust metadata stripping (server-side tools are more thorough)
+- Consistent encryption process
+- Less dependency on browser capabilities
+- Better handling of large files
+- Simpler client-side code
+
+
+4. **Channel URL Format**
+- When recipient creates channel, they get a URL like:
+  ```
+  https://nymshare.com/share/{public_key_or_identifier}
+  ```
+- This same data is encoded in the QR code
+
+5. **Sender Experience**
+- Scans QR or clicks URL
+- Automatically redirected to sharing page
+- The public key is already loaded/available in the page
+- No need for sender to manually input or paste any keys
+- They just select and upload files, the encryption happens automatically using the pre-loaded public key
+
+Benefits:
+- Seamless user experience for whistleblowers
+- No chance of wrong key being used
+- Single step process (just upload files)
+- Less room for user error
+

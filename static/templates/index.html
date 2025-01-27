@@ -78,6 +78,7 @@
         body {
             background-color: #fafafa;
             font-family: var(--font-primary);
+            
         }
 
         main {
@@ -95,7 +96,7 @@
                     rgba(255,255,255,0.08) 100%);
             background-repeat: repeat, no-repeat, no-repeat, no-repeat;
             background-size: 30px 30px, 100% 100%, 100% 100%, 100% 100%;
-            z-index: 0;
+        
         }
 
         main > * {
@@ -136,17 +137,13 @@
         }
 
         .navbar {
-            margin: -1rem 2rem 0 2rem;
-            border-radius: 15px;
-            background: transparent;
-            height: 150px;
-            padding-bottom: 0rem !important;
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            padding-top: 4rem;
+            position: relative;
+            z-index: 9999;
+            padding: 2rem;
+            border-top: 1rem;
         }
 
+        
         .top-lang-selector {
             position: relative;
             background: rgba(240, 240, 240, 0.9);
@@ -274,6 +271,7 @@
                 linear-gradient(60deg, rgb(33, 150, 243), rgb(25, 25, 25));
             background-blend-mode: overlay, overlay, difference, difference, difference, normal;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.9);
+            z-index: 1;
         }
 
         @media (max-width: 768px) {
@@ -577,19 +575,12 @@
     <body>
     <!-- Navigation -->
     <header>
-        <nav class="navbar" role="navigation">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="/static/assets/logo.svg" alt="NymShare Logo" height="40" class="me-2">
-                <span class="fw-bold">NymShare</span>
-            </a>
-            <div class="top-lang-selector" onclick="toggleLang()" id="langToggle">
-                <div class="toggle-option" id="enOption">
-                    <img src="https://hatscripts.github.io/circle-flags/flags/gb.svg" alt="English" width="20">
-                </div>
-                <div class="toggle-option" id="ptOption">
-                    <img src="https://hatscripts.github.io/circle-flags/flags/br.svg" alt="Português" width="20">
-                </div>
-                <div class="toggle-slider" id="toggleSlider"></div>
+        <nav class="navbar navbar-expand-lg" role="navigation">
+            <div class="d-flex justify-content-center align-items-center w-100">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="/static/assets/logo.svg" alt="NymShare Logo" height="90" class="me-2">
+                    <span class="fw-bold">NymShare</span>
+                </a>
             </div>
         </nav>
     </header>
@@ -766,13 +757,7 @@
                             <a href="#" class="text-dark me-4 fs-5"><i class="bi bi-twitter-x"></i></a>
                             <a href="#" class="text-dark fs-5"><i class="bi bi-linkedin"></i></a>
                         </div>
-                        <div class="lang-selector footer-lang-selector">
-                            <label for="languageSelector" class="visually-hidden">Select Language</label>
-                            <select id="languageSelector" class="form-select form-select-sm" onchange="changeLang(this.value)">
-                                <option value="en">EN</option>
-                                <option value="pt-BR">PT</option>
-                            </select>
-                        </div>
+                        
                     </div>
                     <div class="col-6 col-lg-2 mb-4">
                         <h6 class="fw-bold mb-3" data-i18n="footer.company.title">Company</h6>
@@ -800,8 +785,17 @@
                         </ul>
                     </div>
                 </div>
-                <div class="mt-4 pt-4 border-top">
-                    <p class="text-muted small mb-0" data-i18n="footer.copyright"> 2025 NymShare Labs, Inc.</p>
+                <div class="mt-4 pt-4 border-top d-flex justify-content-between align-items-center">
+                    <p class="text-muted small mb-0" data-i18n="footer.copyright">© 2025 NymShare Labs, Inc.</p>
+                    <div class="top-lang-selector" onclick="toggleLang()" id="langToggle">
+                        <div class="toggle-option" id="enOption">
+                            <img src="https://hatscripts.github.io/circle-flags/flags/gb.svg" alt="English" width="20">
+                        </div>
+                        <div class="toggle-option" id="ptOption">
+                            <img src="https://hatscripts.github.io/circle-flags/flags/br.svg" alt="Português" width="20">
+                        </div>
+                        <div class="toggle-slider" id="toggleSlider"></div>
+                    </div>
                 </div>
             </div>
         </footer>
