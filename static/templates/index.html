@@ -576,11 +576,23 @@
     <!-- Navigation -->
     <header>
         <nav class="navbar navbar-expand-lg" role="navigation">
-            <div class="d-flex justify-content-center align-items-center w-100">
+            <div class="d-flex justify-content-between align-items-center w-100">
                 <a class="navbar-brand d-flex align-items-center" href="#">
                     <img src="/static/assets/logo.svg" alt="NymShare Logo" height="90" class="me-2">
                     <span class="fw-bold">NymShare</span>
                 </a>
+                <div class="d-flex gap-3">
+                    <button class="btn btn-link p-0"
+                        hx-get="/share"
+                        hx-target="#content">
+                        <img src="/static/assets/button.svg" alt="Share" height="45" style="filter: brightness(0);">
+                    </button>
+                    <button class="btn btn-link p-0"
+                        hx-get="/channel"
+                        hx-target="#content">
+                        <img src="/static/assets/safe-button.svg" alt="Create Channel" height="30" style="filter: brightness(0);">
+                    </button>
+                </div>
             </div>
         </nav>
     </header>
@@ -597,13 +609,13 @@
                         hx-get="/channel"
                         hx-target="#content">
                         <span data-i18n="hero.create_channel">Create Secure Channel</span>
-                        <img src="/static/assets/button.svg" alt="Arrow">
+                        <img src="/static/assets/safe-button.svg" alt="Arrow">
                     </button>
                     <button class="btn btn-outline-light btn-lg btn-with-icon"
                         hx-get="/share"
                         hx-target="#content">
                         <span data-i18n="hero.share_confidentially">Share Confidentially</span>
-                        <img src="/static/assets/button.svg" alt="Arrow">
+                        <img src="/static/assets/button.svg" height="45" alt="Arrow">
                     </button>
                 </div>
                 <p class="text-white-50 mt-5" id="hero-tagline" style="font-size: 0.9rem; font-weight: 500; letter-spacing: 0.5px;" data-i18n="hero.tagline">Encrypted truths, ephemeral secrets. Define the Accountables.</p>
