@@ -2,6 +2,7 @@ package routes
 
 import (
 	"net/http"
+	"nymshare/handlers"
 
 	"github.com/gorilla/mux"
 )
@@ -16,12 +17,14 @@ func ConfigureRoutes(r *mux.Router) {
 		http.ServeFile(w, r, "static/templates/index.html")
 	}).Methods("GET")
 
-	r.HandleFunc("/channel/", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/channel", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "static/templates/channel.html")
 	}).Methods("GET")
 
-	r.HandleFunc("/share/", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/share", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "static/templates/share.html")
 	}).Methods("GET")
 
+	// API
+	r.HandleFunc("/channel-register", handlers.ChannelRegister).Methods("POST")
 }

@@ -1,1 +1,76 @@
-abc
+<!-- Channel Section -->
+<section class="bg-transparent py-5" aria-label="Channel Creation">
+    <div class="container">
+        <div class="form-container">
+            <h2 class="mb-4">Create Secure Channel</h2>
+            <p class="text-muted mb-4">Register to receive encrypted documents securely. Your public key will be available through a QR code or URL.</p>
+            
+            <form id="channelForm" action="/channel-register" method="POST" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="full_name" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="full_name" name="full_name" required>
+                    <div class="invalid-feedback">Please provide your full name.</div>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                    <div class="invalid-feedback">Please provide a valid email address.</div>
+                </div>
+
+                <div class="key-info mb-4">
+                    <h5><i class="bi bi-shield-lock me-2"></i>Security Information</h5>
+                    <p class="text-muted mb-0">Upon registration, we will:</p>
+                    <ul class="text-muted">
+                        <li>Generate your public/private key pair</li>
+                        <li>Create your secure channel URL and QR code</li>
+                        <li>Download your private key file (.pem) automatically</li>
+                    </ul>
+                    <div class="alert alert-warning" role="alert">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        Keep your private key safe! It cannot be recovered if lost.
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 btn-with-icon">
+                    <span>Create Secure Channel</span>
+                    <img src="/static/assets/safe-button.svg" alt="Create Channel" height="35" style="filter: brightness(0) invert(1);">
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 2rem;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    .key-info {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 1rem;
+        margin-top: 2rem;
+    }
+</style>
+
+<script>
+    // Form validation
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>

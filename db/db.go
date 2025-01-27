@@ -42,7 +42,7 @@ func Connect() (*sql.DB, error) {
 // ExecuteMigrations executes the migrations
 func ExecuteMigrations(conn *sql.DB) error {
 	migrationsFiles := []string{
-		//"db/migrations/0001_create_users_table.sql",
+		"db/migrations/0001_user_channel.sql",
 	}
 
 	for _, file := range migrationsFiles {
